@@ -9,18 +9,13 @@
       "Pakkat",
       "Makki"
     ],
-    "opcoes": [
+    "erradas": [
       "Ap",
-      "Dwit",
-      "Kubi",
       "jirugui",
-      "Hansonnal",
       "Baro",
-      "Momtong",
       "Pakkat",
       "Retchô",
-      "Olgul",
-      "Makki"
+      "Olgul"
     ]
   },
   {
@@ -31,12 +26,10 @@
     ],
     "opcoes": [
       "Dolio",
-      "Yop",
       "Ap",
       "Furyo",
       "Mondolio",
       "Bandal",
-      "Chagui",
       "Jurigui",
       "kubi"
     ]
@@ -51,9 +44,7 @@
       "Dolio",
       "Yop",
       "Pakkat",
-      "Ap",
       "Jirugui",
-      "Chagui",
       "Makki"
     ]
   },
@@ -68,11 +59,9 @@
       "Bal",
       "Furyô",
       "Pakkat",
-      "Chagui",
       "Makki",
       "Tora",
-      "Dollyo",
-      "Mondollyo"
+      "Dollyo"
     ]
   }
 ]
