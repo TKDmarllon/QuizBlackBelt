@@ -63,5 +63,21 @@
       "Tora",
       "Dollyo"
     ]
+  },
+  {
+    "imagem":"https://betdeplaca.com.br/wp-content/uploads/2024/04/54f167fd468deac713bb1572996c9968.jpg",
+    "resposta":[
+      "Dwit",
+      "Chagui"
+    ],
+    "erradas":[
+      "ap",
+      "dollyo",
+      "pakkat",
+      "an",
+      "jirugui",
+      "sonal",
+      "chagui"
+    ]
   }
 ]
