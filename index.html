@@ -258,17 +258,22 @@ function toggleLista() {
 
 function carregarJogo() {
 
-    if (tecnicasEmbaralhadas.length === 0) return;
+    if (!tecnicasEmbaralhadas.length) return;
 
     const t = tecnicasEmbaralhadas[tecnicaAtualIndex];
 
     document.getElementById("imagemTecnica").src = t.imagem;
+
     respostaMontada = [];
     atualizarArea();
 
+    // Garantia contra erro
+    const resposta = Array.isArray(t.resposta) ? t.resposta : [];
+    const erradas = Array.isArray(t.erradas) ? t.erradas : [];
+
     const opcoes = embaralhar([
-        ...t.resposta,
-        ...t.erradas
+        ...resposta,
+        ...erradas
     ]);
 
     carregarOpcoes(opcoes);
