@@ -163,6 +163,13 @@ By Marllon Rocha - Equipe Black Belt
 
 </section>
 
+<section>
+    <h2>Administração</h2>
+    <button style="background:#b00020; color:white;" onclick="resetarBanco()">
+        🔄 Resetar Banco de Dados
+    </button>
+</section>
+
 <script>
 
 let tecnicas = [];
@@ -354,6 +361,19 @@ document.getElementById("importFile").addEventListener("change", function(e) {
 });
 
 carregarTecnicasIniciais();
+
+function resetarBanco() {
+
+    if (!confirm("Tem certeza que deseja apagar os dados locais e recarregar o banco original?")) {
+        return;
+    }
+
+    localStorage.clear();
+
+    alert("Banco de dados resetado com sucesso!");
+
+    location.reload(); // recarrega a página
+}
 
 </script>
 
