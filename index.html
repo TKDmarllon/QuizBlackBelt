@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jogo de Técnicas - Taekwondo</title>
+<title>Sistema de Técnicas - Taekwondo</title>
 
 <style>
 * { box-sizing: border-box; }
@@ -64,6 +64,7 @@ button {
 .verificar { background: green; color: white; }
 .apagar { background: red; color: white; }
 .pular { background: orange; color: white; }
+.toggle-btn { background: #222; color: white; }
 
 #opcoes button {
     width: auto;
@@ -106,14 +107,7 @@ img {
     font-weight: bold;
 }
 
-.toggle-btn {
-    background: #222;
-    color: white;
-}
-
-.hidden {
-    display: none;
-}
+.hidden { display: none; }
 
 @media (min-width: 768px) {
     section {
@@ -127,7 +121,7 @@ img {
 <body>
 
 <div class="credito">
-    By Marllon Rocha - Equipe Black Belt
+By Marllon Rocha - Equipe Black Belt
 </div>
 
 <h1>🥋 Sistema de Técnicas</h1>
@@ -140,6 +134,17 @@ img {
 <textarea id="erradasInput" placeholder="Opções de nomes errados (separar por vírgula)"></textarea>
 
 <button class="cadastrar" onclick="cadastrarTecnica()">Cadastrar</button>
+<button class="exportar" onclick="exportarTecnicas()">Exportar Técnicas</button>
+
+<input type="file" id="importFile" hidden>
+<button class="importar" onclick="document.getElementById('importFile').click()">Importar Técnicas</button>
+
+<button class="toggle-btn" onclick="toggleLista()">Mostrar / Esconder Técnicas</button>
+
+<div id="listaContainer" class="hidden">
+<h3>Técnicas Cadastradas</h3>
+<div id="listaTecnicas"></div>
+</div>
 
 </section>
 
@@ -161,11 +166,45 @@ img {
 <script>
 
 let tecnicas = [];
+let tecnicasEmbaralhadas = [];
 let tecnicaAtualIndex = 0;
 let respostaMontada = [];
 
+function salvarStorage() {
+    localStorage.setItem("tecnicas", JSON.stringify(tecnicas));
+}
+
 function embaralhar(array) {
     return array.sort(() => Math.random() - 0.5);
+}
+
+function carregarTecnicasIniciais() {
+
+    const storage = localStorage.getItem("tecnicas");
+
+    if (storage) {
+        tecnicas = JSON.parse(storage);
+        iniciarSistema();
+    } else {
+        fetch("tecnicas.json")
+            .then(r => r.json())
+            .then(data => {
+                tecnicas = data;
+                salvarStorage();
+                iniciarSistema();
+            });
+    }
+}
+
+function iniciarSistema() {
+    listarTecnicas();
+    iniciarJogo();
+    carregarJogo();
+}
+
+function iniciarJogo() {
+    tecnicasEmbaralhadas = embaralhar([...tecnicas]);
+    tecnicaAtualIndex = 0;
 }
 
 function cadastrarTecnica() {
@@ -183,48 +222,67 @@ function cadastrarTecnica() {
     }
 
     tecnicas.push({ imagem, resposta, erradas });
+    salvarStorage();
 
     document.getElementById("imagemInput").value = "";
     document.getElementById("respostaInput").value = "";
     document.getElementById("erradasInput").value = "";
 
-    iniciarJogo();
+    iniciarSistema();
 }
 
-function iniciarJogo() {
-    tecnicaAtualIndex = 0;
-    carregarJogo();
+function excluirTecnica(index) {
+    tecnicas.splice(index, 1);
+    salvarStorage();
+    iniciarSistema();
+}
+
+function listarTecnicas() {
+    const lista = document.getElementById("listaTecnicas");
+    lista.innerHTML = "";
+
+    tecnicas.forEach((t, i) => {
+        const div = document.createElement("div");
+        div.className = "tecnica-item";
+        div.innerHTML = `
+            ${t.resposta.join(" ")}
+            <button onclick="excluirTecnica(${i})">Excluir</button>
+        `;
+        lista.appendChild(div);
+    });
+}
+
+function toggleLista() {
+    document.getElementById("listaContainer").classList.toggle("hidden");
 }
 
 function carregarJogo() {
 
-    if (tecnicas.length === 0) return;
+    if (tecnicasEmbaralhadas.length === 0) return;
 
-    const t = tecnicas[tecnicaAtualIndex];
+    const t = tecnicasEmbaralhadas[tecnicaAtualIndex];
 
     document.getElementById("imagemTecnica").src = t.imagem;
-
     respostaMontada = [];
     atualizarArea();
 
-    const opcoesMisturadas = embaralhar([
+    const opcoes = embaralhar([
         ...t.resposta,
         ...t.erradas
     ]);
 
-    carregarOpcoes(opcoesMisturadas);
+    carregarOpcoes(opcoes);
 }
 
 function carregarOpcoes(opcoes) {
-
-    const opcoesDiv = document.getElementById("opcoes");
-    opcoesDiv.innerHTML = "";
+    const div = document.getElementById("opcoes");
+    div.innerHTML = "";
 
     opcoes.forEach(p => {
         const btn = document.createElement("button");
         btn.innerText = p;
         btn.onclick = () => adicionarPalavra(p);
-        opcoesDiv.appendChild(btn);
+        div.appendChild(btn);
     });
 }
 
@@ -243,20 +301,15 @@ function apagarUltima() {
 }
 
 function pularTecnica() {
-
     tecnicaAtualIndex++;
-
-    if (tecnicaAtualIndex >= tecnicas.length) {
-        tecnicaAtualIndex = 0;
-    }
-
+    if (tecnicaAtualIndex >= tecnicasEmbaralhadas.length) iniciarJogo();
     document.getElementById("resultado").innerText = "";
     carregarJogo();
 }
 
 function verificar() {
 
-    const t = tecnicas[tecnicaAtualIndex];
+    const t = tecnicasEmbaralhadas[tecnicaAtualIndex];
 
     if (JSON.stringify(respostaMontada) === JSON.stringify(t.resposta)) {
 
@@ -265,9 +318,7 @@ function verificar() {
 
         setTimeout(() => {
             tecnicaAtualIndex++;
-            if (tecnicaAtualIndex >= tecnicas.length) {
-                tecnicaAtualIndex = 0;
-            }
+            if (tecnicaAtualIndex >= tecnicasEmbaralhadas.length) iniciarJogo();
             document.getElementById("resultado").innerText = "";
             carregarJogo();
         }, 1000);
@@ -277,6 +328,27 @@ function verificar() {
         document.getElementById("resultado").style.color = "red";
     }
 }
+
+function exportarTecnicas() {
+    const blob = new Blob([JSON.stringify(tecnicas, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "tecnicas-taekwondo.json";
+    a.click();
+}
+
+document.getElementById("importFile").addEventListener("change", function(e) {
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        tecnicas = JSON.parse(event.target.result);
+        salvarStorage();
+        iniciarSistema();
+    };
+    reader.readAsText(e.target.files[0]);
+});
+
+carregarTecnicasIniciais();
 
 </script>
 
