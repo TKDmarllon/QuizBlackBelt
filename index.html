@@ -13,12 +13,14 @@ body {
     margin: 0;
     background: #f4f4f4;
 }
+
 .credito {
-    text-align: center;
-    padding: 10px;
-    background: #222;
-    color: white;
-    font-size: 14px;
+    position: fixed;
+    top: 8px;
+    left: 10px;
+    font-size: 13px;
+    color: #555;
+    z-index: 999;
 }
 
 h1 {
@@ -123,6 +125,7 @@ img {
 </head>
 
 <body>
+
 <div class="credito">
     By Marllon Rocha - Equipe Black Belt
 </div>
@@ -134,20 +137,9 @@ img {
 
 <input type="text" id="imagemInput" placeholder="Link da imagem">
 <textarea id="respostaInput" placeholder="Resposta correta (separar por espaço)"></textarea>
-<textarea id="opcoesInput" placeholder="Palavras disponíveis (separar por vírgula)"></textarea>
+<textarea id="erradasInput" placeholder="Opções de nomes errados (separar por vírgula)"></textarea>
 
 <button class="cadastrar" onclick="cadastrarTecnica()">Cadastrar</button>
-<button class="exportar" onclick="exportarTecnicas()">Exportar Técnicas</button>
-
-<input type="file" id="importFile" hidden>
-<button class="importar" onclick="document.getElementById('importFile').click()">Importar Técnicas</button>
-
-<button class="toggle-btn" onclick="toggleLista()">Mostrar / Esconder Técnicas</button>
-
-<div id="listaContainer" class="hidden">
-    <h3>Técnicas Cadastradas</h3>
-    <div id="listaTecnicas"></div>
-</div>
 
 </section>
 
@@ -168,86 +160,59 @@ img {
 
 <script>
 
-let tecnicas = JSON.parse(localStorage.getItem("tecnicas")) || [];
-let tecnicasEmbaralhadas = [];
+let tecnicas = [];
 let tecnicaAtualIndex = 0;
 let respostaMontada = [];
 
-function salvarStorage() {
-    localStorage.setItem("tecnicas", JSON.stringify(tecnicas));
-}
-
-function embaralharArray(array) {
+function embaralhar(array) {
     return array.sort(() => Math.random() - 0.5);
-}
-
-function iniciarJogo() {
-    tecnicasEmbaralhadas = embaralharArray([...tecnicas]);
-    tecnicaAtualIndex = 0;
 }
 
 function cadastrarTecnica() {
 
     const imagem = document.getElementById("imagemInput").value;
     const resposta = document.getElementById("respostaInput").value.trim().split(" ");
-    const opcoes = document.getElementById("opcoesInput").value.split(",").map(p => p.trim());
+    const erradas = document.getElementById("erradasInput").value
+        .split(",")
+        .map(p => p.trim())
+        .filter(p => p !== "");
 
-    if (!imagem || resposta.length === 0 || opcoes.length === 0) {
-        alert("Preencha todos os campos.");
+    if (!imagem || resposta.length === 0) {
+        alert("Preencha imagem e resposta.");
         return;
     }
 
-    tecnicas.push({ imagem, resposta, opcoes });
-    salvarStorage();
+    tecnicas.push({ imagem, resposta, erradas });
 
     document.getElementById("imagemInput").value = "";
     document.getElementById("respostaInput").value = "";
-    document.getElementById("opcoesInput").value = "";
+    document.getElementById("erradasInput").value = "";
 
-    listarTecnicas();
     iniciarJogo();
+}
+
+function iniciarJogo() {
+    tecnicaAtualIndex = 0;
     carregarJogo();
-}
-
-function excluirTecnica(index) {
-    tecnicas.splice(index, 1);
-    salvarStorage();
-    listarTecnicas();
-    iniciarJogo();
-    carregarJogo();
-}
-
-function listarTecnicas() {
-
-    const lista = document.getElementById("listaTecnicas");
-    lista.innerHTML = "";
-
-    tecnicas.forEach((t, i) => {
-
-        const div = document.createElement("div");
-        div.className = "tecnica-item";
-        div.innerHTML = `
-            ${t.resposta.join(" ")}
-            <button onclick="excluirTecnica(${i})">Excluir</button>
-        `;
-        lista.appendChild(div);
-    });
-}
-
-function toggleLista() {
-    document.getElementById("listaContainer").classList.toggle("hidden");
 }
 
 function carregarJogo() {
 
-    if (tecnicasEmbaralhadas.length === 0) return;
+    if (tecnicas.length === 0) return;
 
-    const t = tecnicasEmbaralhadas[tecnicaAtualIndex];
+    const t = tecnicas[tecnicaAtualIndex];
 
     document.getElementById("imagemTecnica").src = t.imagem;
+
     respostaMontada = [];
     atualizarArea();
-    carregarOpcoes(embaralharArray([...t.opcoes]));
+
+    const opcoesMisturadas = embaralhar([
+        ...t.resposta,
+        ...t.erradas
+    ]);
+
+    carregarOpcoes(opcoesMisturadas);
 }
 
 function carregarOpcoes(opcoes) {
@@ -279,80 +244,39 @@ function apagarUltima() {
 
 function pularTecnica() {
 
-    if (tecnicasEmbaralhadas.length === 0) return;
-
     tecnicaAtualIndex++;
 
-    if (tecnicaAtualIndex >= tecnicasEmbaralhadas.length) {
-        iniciarJogo();
+    if (tecnicaAtualIndex >= tecnicas.length) {
+        tecnicaAtualIndex = 0;
     }
 
-    respostaMontada = [];
-    atualizarArea();
     document.getElementById("resultado").innerText = "";
-
     carregarJogo();
 }
 
 function verificar() {
 
-    const t = tecnicasEmbaralhadas[tecnicaAtualIndex];
-    const resultado = document.getElementById("resultado");
+    const t = tecnicas[tecnicaAtualIndex];
 
     if (JSON.stringify(respostaMontada) === JSON.stringify(t.resposta)) {
 
-        resultado.innerText = "Correto 👊";
-        resultado.style.color = "green";
-
-        tecnicaAtualIndex++;
-
-        if (tecnicaAtualIndex >= tecnicasEmbaralhadas.length) {
-            iniciarJogo();
-        }
+        document.getElementById("resultado").innerText = "Correto 👊";
+        document.getElementById("resultado").style.color = "green";
 
         setTimeout(() => {
-            resultado.innerText = "";
+            tecnicaAtualIndex++;
+            if (tecnicaAtualIndex >= tecnicas.length) {
+                tecnicaAtualIndex = 0;
+            }
+            document.getElementById("resultado").innerText = "";
             carregarJogo();
-        }, 1200);
+        }, 1000);
 
     } else {
-        resultado.innerText = "Tente novamente ❌";
-        resultado.style.color = "red";
+        document.getElementById("resultado").innerText = "Tente novamente ❌";
+        document.getElementById("resultado").style.color = "red";
     }
 }
-
-function exportarTecnicas() {
-    const dataStr = JSON.stringify(tecnicas, null, 2);
-    const blob = new Blob([dataStr], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "tecnicas-taekwondo.json";
-    a.click();
-    URL.revokeObjectURL(url);
-}
-
-document.getElementById("importFile").addEventListener("change", function(event) {
-
-    const file = event.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-
-    reader.onload = function(e) {
-        tecnicas = JSON.parse(e.target.result);
-        salvarStorage();
-        listarTecnicas();
-        iniciarJogo();
-        carregarJogo();
-    };
-
-    reader.readAsText(file);
-});
-
-listarTecnicas();
-iniciarJogo();
-carregarJogo();
 
 </script>
 
