@@ -3,89 +3,140 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sistema de Técnicas - Taekwondo</title>
+<title>Quiz Black Belt</title>
 
 <style>
-* { box-sizing: border-box; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
 
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background: #f4f4f4;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    min-height: 100vh;
+    color: #333;
 }
 
 .credito {
     position: fixed;
-    top: 8px;
-    left: 10px;
-    font-size: 13px;
-    color: #555;
+    top: 10px;
+    left: 12px;
+    font-size: 12px;
+    color: #ddd;
     z-index: 999;
+    text-align: center;
+}
+
+.credito img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    margin-top: 5px;
+    border: 2px solid white;
 }
 
 h1 {
     text-align: center;
-    padding: 15px;
-    background: #111;
+    padding: 20px;
     color: white;
-    margin: 0;
+    font-size: 26px;
+    font-weight: 600;
 }
 
 section {
     background: white;
-    margin: 15px;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 18px;
+    max-width: 700px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+h2 {
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: #222;
 }
 
 input, textarea {
     width: 100%;
     padding: 12px;
-    margin: 6px 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 16px;
+    margin: 8px 0;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+input:focus, textarea:focus {
+    border: 1px solid #1976d2;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(25,118,210,0.15);
 }
 
 button {
     width: 100%;
     padding: 12px;
-    margin-top: 8px;
-    border-radius: 8px;
+    margin-top: 10px;
+    border-radius: 12px;
     border: none;
-    font-size: 16px;
+    font-size: 15px;
     cursor: pointer;
+    font-weight: 500;
+    transition: 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
 }
 
 .cadastrar { background: #1976d2; color: white; }
-.exportar { background: #333; color: white; }
-.importar { background: #444; color: white; }
-.verificar { background: green; color: white; }
-.apagar { background: red; color: white; }
-.pular { background: orange; color: white; }
+.exportar { background: #444; color: white; }
+.importar { background: #555; color: white; }
+.verificar { background: #2e7d32; color: white; }
+.apagar { background: #c62828; color: white; }
+.pular { background: #ef6c00; color: white; }
 .toggle-btn { background: #222; color: white; }
+
+#opcoes {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
 #opcoes button {
     width: auto;
-    margin: 5px;
-    padding: 10px 14px;
-    border-radius: 20px;
-    background: #1976d2;
+    margin: 6px;
+    padding: 10px 16px;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #1976d2, #2196f3);
     color: white;
+    font-weight: 500;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+#opcoes button:hover {
+    background: linear-gradient(45deg, #1565c0, #1e88e5);
 }
 
 img {
     width: 100%;
-    border-radius: 10px;
-    margin: 10px 0;
+    border-radius: 18px;
+    margin: 15px 0;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
 .tecnica-item {
-    background: #eee;
-    padding: 8px;
-    margin: 6px 0;
-    border-radius: 8px;
+    background: #f5f5f5;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -93,38 +144,64 @@ img {
 
 .tecnica-item button {
     width: auto;
-    background: red;
+    background: #d32f2f;
     color: white;
     padding: 6px 10px;
+    border-radius: 8px;
 }
 
 #areaMontada {
-    min-height: 40px;
-    padding: 10px;
-    background: #fafafa;
-    border-radius: 8px;
+    min-height: 45px;
+    padding: 12px;
+    background: #f1f1f1;
+    border-radius: 12px;
     margin-bottom: 10px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 18px;
+}
+
+#resultado {
+    margin-top: 20px;
+    font-size: 24px;
     font-weight: bold;
+    text-align: center;
+    padding: 15px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.resultado-correto {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 2px solid #2e7d32;
+}
+
+.resultado-erro {
+    background: #ffebee;
+    color: #c62828;
+    border: 2px solid #c62828;
 }
 
 .hidden { display: none; }
 
-@media (min-width: 768px) {
-    section {
-        max-width: 700px;
-        margin: 20px auto;
-    }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
+
 </style>
 </head>
 
 <body>
 
 <div class="credito">
-By Marllon Rocha - Equipe Black Belt
+    <div>By Marllon Rocha - Equipe Black Belt</div>
+    <img src="https://scontent-gig4-2.cdninstagram.com/v/t51.2885-19/475681856_957372735992895_1119435300798541659_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4zMjAuYzIifQ&_nc_ht=scontent-gig4-2.cdninstagram.com&_nc_cat=103&_nc_oc=Q6cZ2QGUQXK7zwYCt9tLMDG3mjmEKcPLsoe3Rga3iKyCxwAH-85H3nERrZdkc4IMpKEa-Qw&_nc_ohc=h8NM2M2f6uEQ7kNvwGNxDoJ&_nc_gid=mDhVKMsgFRnJBMqiUzeTLw&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfsEVK_ALUd8EtFCt6AqDFO1XG0CTjp8KfN9d8OXDMK21A&oe=69A7B0F7&_nc_sid=8b3546"
+         style="width:60px; height:60px; border-radius:50%; margin-top:5px;">
 </div>
 
-<h1>🥋 Sistema de Técnicas</h1>
+<h1>🥋 Quiz Black Belt</h1>
 
 <section>
 <h2>Cadastrar Técnica</h2>
@@ -322,22 +399,27 @@ function pularTecnica() {
 function verificar() {
 
     const t = tecnicasEmbaralhadas[tecnicaAtualIndex];
+    const resultado = document.getElementById("resultado");
+
+    resultado.classList.remove("resultado-correto", "resultado-erro");
 
     if (JSON.stringify(respostaMontada) === JSON.stringify(t.resposta)) {
 
-        document.getElementById("resultado").innerText = "Correto 👊";
-        document.getElementById("resultado").style.color = "green";
+        resultado.innerText = "✅ CORRETO! 👊🥋";
+        resultado.classList.add("resultado-correto");
 
         setTimeout(() => {
             tecnicaAtualIndex++;
             if (tecnicaAtualIndex >= tecnicasEmbaralhadas.length) iniciarJogo();
-            document.getElementById("resultado").innerText = "";
+            resultado.innerText = "";
+            resultado.classList.remove("resultado-correto");
             carregarJogo();
-        }, 1000);
+        }, 1200);
 
     } else {
-        document.getElementById("resultado").innerText = "Tente novamente ❌";
-        document.getElementById("resultado").style.color = "red";
+
+        resultado.innerText = "❌ ERRADO! TENTE NOVAMENTE!";
+        resultado.classList.add("resultado-erro");
     }
 }
 
