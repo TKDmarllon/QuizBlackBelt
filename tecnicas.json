@@ -65,19 +65,106 @@
     ]
   },
   {
-    "imagem":"https://betdeplaca.com.br/wp-content/uploads/2024/04/54f167fd468deac713bb1572996c9968.jpg",
-    "resposta":[
+    "imagem": "https://betdeplaca.com.br/wp-content/uploads/2024/04/54f167fd468deac713bb1572996c9968.jpg",
+    "resposta": [
       "Dwit",
       "Chagui"
     ],
-    "erradas":[
+    "erradas": [
       "ap",
       "dollyo",
       "pakkat",
       "an",
       "jirugui",
-      "sonal",
-      "chagui"
+      "sonnal",
+      "Olgul"
+    ]
+  },
+  {
+    "imagem": "https://taekwonwikia.com.br/wp-content/uploads/2020/10/img_20161111_094721024.jpg",
+    "resposta": [
+      "Jumtchum",
+      "Momtong",
+      "Jirugui"
+    ],
+    "erradas": [
+      "Ap",
+      "Dwit",
+      "Sonnal",
+      "Olgul",
+      "Top",
+      "Baro",
+      "Area"
+    ]
+  },
+  {
+    "imagem": "https://examtimeassets.s3.amazonaws.com/uploads/multiple_choice_question/image/2745493/desktop_4f72f597-47ca-4edd-8466-ca8c2aa2f55f.jpeg",
+    "resposta": [
+      "Ap",
+      "Seogui",
+      "Arae",
+      "Makki"
+    ],
+    "erradas": [
+      "Dwit",
+      "Baro",
+      "Yop",
+      "Jirugui",
+      "Olgul",
+      "Hansonnal",
+      "Otkoro"
+    ]
+  },
+  {
+    "imagem": "https://i.pinimg.com/1200x/7d/5a/a8/7d5aa84fd3bc2db57f3d016b791638e7.jpg",
+    "resposta": [
+      "Twio",
+      "Yop",
+      "Chagui"
+    ],
+    "erradas": [
+      "Ap",
+      "Jirugui",
+      "Area",
+      "Seogui",
+      "Makki"
+    ]
+  },
+  {
+    "imagem": "https://i.pinimg.com/736x/c3/73/04/c373044e5c4f11a774cc5332013b4442.jpg",
+    "resposta": [
+      "Bon",
+      "Seogui",
+      "Kodureo",
+      "Batanson",
+      "Momtong",
+      "An",
+      "Makki"
+    ],
+    "erradas": [
+      "Ap",
+      "Dwit",
+      "Sonnal",
+      "Area",
+      "Olgul",
+      "Baro"
+    ]
+  },
+  {
+    "imagem": "https://i.pinimg.com/1200x/b4/5c/48/b45c488d5c6a351b32f2c8da030d330f.jpg",
+    "resposta": [
+      "Ap",
+      "Bal",
+      "Redjhon(Dolgue)",
+      "Chagui"
+    ],
+    "erradas": [
+      "Baro",
+      "Jirugui",
+      "Dubal",
+      "Dwit",
+      "Makki",
+      "Momtong"
     ]
   }
 ]
