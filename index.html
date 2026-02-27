@@ -437,27 +437,31 @@ function pularTecnica() {
 function verificar() {
 
     const t = tecnicasEmbaralhadas[tecnicaAtualIndex];
-    const resultado = document.getElementById("resultado");
+    const overlay = document.getElementById("overlayResultado");
+    const texto = document.getElementById("overlayTexto");
 
-    resultado.classList.remove("resultado-correto", "resultado-erro");
+    overlay.classList.remove("hidden", "overlay-correto", "overlay-erro");
 
     if (JSON.stringify(respostaMontada) === JSON.stringify(t.resposta)) {
 
-        resultado.innerText = "✅ CORRETO! 👊🥋";
-        resultado.classList.add("resultado-correto");
+        texto.innerText = "✅ CORRETO! 👊🥋";
+        overlay.classList.add("overlay-correto");
 
         setTimeout(() => {
+            overlay.classList.add("hidden");
             tecnicaAtualIndex++;
             if (tecnicaAtualIndex >= tecnicasEmbaralhadas.length) iniciarJogo();
-            resultado.innerText = "";
-            resultado.classList.remove("resultado-correto");
             carregarJogo();
-        }, 1200);
+        }, 1500);
 
     } else {
 
-        resultado.innerText = "❌ ERRADO! TENTE NOVAMENTE!";
-        resultado.classList.add("resultado-erro");
+        texto.innerText = "❌ ERRADO!";
+        overlay.classList.add("overlay-erro");
+
+        setTimeout(() => {
+            overlay.classList.add("hidden");
+        }, 1500);
     }
 }
 
