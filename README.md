@@ -1,130 +1,115 @@
-🥋 Quiz Black Belt
+# 🥋 Quiz Black Belt
 
 Sistema web interativo para auxiliar no aprendizado de técnicas e Poomsae de Taekwondo.
 
 Desenvolvido para uso em aula, com foco em memorização dos nomes técnicos e apoio visual através de vídeos.
 
-📌 Funcionalidades
-📋 Cadastro de Técnicas
+---
 
-Cadastro de técnica com:
+## 📌 Funcionalidades
 
-Link da imagem
+### 📋 Cadastro de Técnicas
 
-Nome correto (separado por palavras)
+- Cadastro de técnica com:
+  - Link da imagem
+  - Nome correto (separado por palavras)
+  - Opções de nomes errados
+- Armazenamento local usando `localStorage`
+- Listagem das técnicas cadastradas
+- Exclusão individual de técnicas
+- Ocultar / Mostrar lista de técnicas
 
-Opções de nomes errados
+---
 
-Armazenamento local usando localStorage
+### 🎮 Sistema de Quiz
 
-Listagem das técnicas cadastradas
+- Exibição da imagem da técnica
+- Palavras embaralhadas
+- Montagem do nome correto pelo usuário
+- Botões:
+  - ✅ Verificar
+  - ⬅️ Apagar última palavra
+  - ⏭️ Pular técnica
+- Feedback visual centralizado (overlay):
+  - ✅ Correto
+  - ❌ Errado
+- Avança automaticamente ao acertar
+- Técnicas exibidas em ordem aleatória
 
-Exclusão individual de técnicas
+---
 
-Ocultar / Mostrar lista de técnicas
-
-🎮 Sistema de Quiz
-
-Exibição da imagem da técnica
-
-Palavras embaralhadas
-
-Montagem do nome correto pelo usuário
-
-Botão:
-
-Verificar
-
-Apagar última palavra
-
-Pular técnica
-
-Feedback visual centralizado (overlay):
-
-✅ Correto
-
-❌ Errado
-
-Avança automaticamente ao acertar
-
-Técnicas exibidas em ordem aleatória
-
-📺 Aba de Poomsae
+### 📺 Aba de Poomsae
 
 Integração com vídeo do YouTube contendo todos os Taegeuk.
 
 Cada faixa redireciona para a minutagem correta:
 
-Faixa Amarela – Taegeuk 1 Jang
+- 🟡 Faixa Amarela – Taegeuk 1 Jang
+- 🟡🟢 Faixa Amarela Ponta Verde – Taegeuk 2 Jang
+- 🟢 Faixa Verde – Taegeuk 3 Jang
+- 🟢🔵 Faixa Verde Ponta Azul – Taegeuk 4 Jang
+- 🔵 Faixa Azul – Taegeuk 5 Jang
+- 🔵🔴 Faixa Azul Ponta Vermelha – Taegeuk 6 Jang
+- 🔴 Faixa Vermelha – Taegeuk 7 Jang
+- 🔴⚫ Faixa Vermelha Ponta Preta – Taegeuk 8 Jang
 
-Faixa Amarela Ponta Verde – Taegeuk 2 Jang
+Abertura automática na minutagem correta do vídeo.
 
-Faixa Verde – Taegeuk 3 Jang
+---
 
-Faixa Verde Ponta Azul – Taegeuk 4 Jang
+### ⚙️ Administração
 
-Faixa Azul – Taegeuk 5 Jang
+- 📤 Exportar técnicas (arquivo JSON)
+- 📥 Importar técnicas (arquivo JSON)
+- 🔄 Resetar banco de dados (limpa `localStorage`)
 
-Faixa Azul Ponta Vermelha – Taegeuk 6 Jang
+---
 
-Faixa Vermelha – Taegeuk 7 Jang
-
-Faixa Vermelha Ponta Preta – Taegeuk 8 Jang
-
-Abertura automática na minutagem correta.
-
-⚙️ Administração
-
-📤 Exportar técnicas (arquivo JSON)
-
-📥 Importar técnicas (arquivo JSON)
-
-🔄 Resetar banco de dados (limpa localStorage)
-
-📱 Interface Mobile First
+## 📱 Interface Mobile First
 
 O sistema foi desenvolvido com foco em uso pelo celular.
 
 Possui:
 
-Menu inferior fixo (estilo aplicativo)
+- Menu inferior fixo (estilo aplicativo)
+- Navegação por abas:
+  - Cadastro
+  - Jogo
+  - Poomsae
+  - Administração
+- Layout moderno com degradê e cards
+- Botões responsivos
+- Transições suaves
 
-Navegação por abas:
+---
 
-Cadastro
-
-Jogo
-
-Poomsae
-
-Administração
-
-Layout moderno com degradê e cards
-
-Botões responsivos
-
-Transições suaves
-
-💾 Armazenamento de Dados
+## 💾 Armazenamento de Dados
 
 O sistema utiliza:
 
-localStorage para salvar técnicas localmente
-
-Arquivo tecnicas.json como banco inicial
-
-Importação/exportação manual para backup
+- `localStorage` para salvar técnicas localmente
+- Arquivo `tecnicas.json` como banco inicial
+- Importação/exportação manual para backup
 
 Não utiliza banco de dados externo.
 
-🛠 Tecnologias Utilizadas
+---
 
-HTML5
+## 🛠 Tecnologias Utilizadas
 
-CSS3 (layout moderno e responsivo)
+- HTML5
+- CSS3
+- JavaScript (Vanilla JS)
+- Integração com YouTube (redirecionamento por minutagem)
+- Hospedagem estática (Netlify ou GitHub Pages)
 
-JavaScript puro (Vanilla JS)
+---
 
-YouTube (redirecionamento com minutagem)
+## 🎯 Objetivo do Projeto
 
-Hospedagem estática (Netlify ou GitHub Pages)
+Auxiliar alunos de Taekwondo na:
+
+- Memorização dos nomes técnicos
+- Associação visual da técnica com o nome correto
+- Estudo dos Poomsae por faixa
+- Reforço do aprendizado fora da aula
