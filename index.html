@@ -90,6 +90,44 @@ button {
     transition: 0.2s ease;
 }
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.overlay div {
+    background: white;
+    padding: 40px 60px;
+    border-radius: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    animation: zoomIn 0.3s ease;
+}
+
+.overlay-correto div {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.overlay-erro div {
+    background: #ffebee;
+    color: #c62828;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
 button:hover {
     transform: translateY(-2px);
     opacity: 0.95;
@@ -458,6 +496,10 @@ function resetarBanco() {
 }
 
 </script>
+
+<div id="overlayResultado" class="overlay hidden">
+    <div id="overlayTexto"></div>
+</div>
 
 </body>
 </html>
