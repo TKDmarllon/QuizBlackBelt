@@ -20,6 +20,35 @@ body {
     color: #333;
 }
 
+.tela {
+    padding-bottom: 90px; /* espaço pro menu */
+}
+
+.menuInferior {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #111;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+.menuInferior button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.menuInferior button:hover {
+    color: #2196f3;
+}
+
 .credito {
     position: fixed;
     top: 10px;
@@ -241,7 +270,7 @@ img {
 
 <h1>🥋 Quiz Black Belt</h1>
 
-<section>
+<section id="cadastroTela" class="tela">
 <h2>Cadastrar Técnica</h2>
 
 <input type="text" id="imagemInput" placeholder="Link da imagem">
@@ -249,12 +278,9 @@ img {
 <textarea id="erradasInput" placeholder="Opções de nomes errados (separar por vírgula)"></textarea>
 
 <button class="cadastrar" onclick="cadastrarTecnica()">Cadastrar</button>
-<button class="exportar" onclick="exportarTecnicas()">Exportar Técnicas</button>
 
-<input type="file" id="importFile" hidden>
-<button class="importar" onclick="document.getElementById('importFile').click()">Importar Técnicas</button>
 
-<button class="toggle-btn" onclick="toggleLista()">Mostrar / Esconder Técnicas</button>
+<button class="toggle-btn" onclick="toggleLista()">Mostrar Técnicas Cadastradas</button>
 
 <div id="listaContainer" class="hidden">
 <h3>Técnicas Cadastradas</h3>
@@ -263,8 +289,8 @@ img {
 
 </section>
 
-<section>
-<h2>Jogo</h2>
+<section id="jogoTela" class="tela hidden">
+<h2>Escreva o nome da técnica</h2>
 
 <img id="imagemTecnica">
 <div id="areaMontada"></div>
@@ -278,8 +304,36 @@ img {
 
 </section>
 
-<section>
+<section id="poomsaeTela" class="tela hidden">
+<h2>📺 Poomsae</h2>
+
+<div class="poomsae-grid">
+
+<button onclick="abrirPoomsae(61)">Faixa Amarela - Taegeuk 1 Jang</button>
+<button onclick="abrirPoomsae(99)">Faixa Amarela Ponta Verde - Taegeuk 2 Jang</button>
+<button onclick="abrirPoomsae(140)">Faixa Verde - Taegeuk 3 Jang</button>
+<button onclick="abrirPoomsae(188)">Faixa Verde Ponta Azul - Taegeuk 4 Jang</button>
+<button onclick="abrirPoomsae(234)">Faixa Azul - Taegeuk 5 Jang</button>
+<button onclick="abrirPoomsae(285)">Faixa Azul Ponta Vermelha - Taegeuk 6 Jang</button>
+<button onclick="abrirPoomsae(340)">Faixa Vermelha - Taegeuk 7 Jang</button>
+<button onclick="abrirPoomsae(396)">Faixa Vermelha Ponta Preta - Taegeuk 8 Jang</button>
+
+</div>
+
+</section>
+
+<section id="adminTela" class="tela hidden">
     <h2>Administração</h2>
+
+    <button class="exportar" onclick="exportarTecnicas()">
+        📤 Exportar Técnicas
+    </button>
+
+    <input type="file" id="importFile" hidden>
+    <button class="importar" onclick="document.getElementById('importFile').click()">
+        📥 Importar Técnicas
+    </button>
+
     <button style="background:#b00020; color:white;" onclick="resetarBanco()">
         🔄 Resetar Banco de Dados
     </button>
@@ -316,6 +370,24 @@ function carregarTecnicasIniciais() {
                 iniciarSistema();
             });
     }
+}
+
+function trocarTela(id) {
+
+    document.querySelectorAll(".tela").forEach(t => {
+        t.classList.add("hidden");
+    });
+
+    document.getElementById(id).classList.remove("hidden");
+
+    window.scrollTo(0,0);
+}
+
+function abrirPoomsae(segundos) {
+    window.open(
+        `https://www.youtube.com/watch?v=y-pmLZmjoG8&t=${segundos}s`,
+        "_blank"
+    );
 }
 
 function iniciarSistema() {
@@ -503,6 +575,13 @@ function resetarBanco() {
 
 <div id="overlayResultado" class="overlay hidden">
     <div id="overlayTexto"></div>
+</div>
+
+<div class="menuInferior">
+    <button onclick="trocarTela('cadastroTela')">Cadastrar Técnicas</button>
+    <button onclick="trocarTela('jogoTela')">Jogo</button>
+    <button onclick="trocarTela('poomsaeTela')">Poomsae</button>
+    <button onclick="trocarTela('adminTela')">Admin</button>
 </div>
 
 </body>
