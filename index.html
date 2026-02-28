@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quiz Black Belt</title>
+<title>Equipe Black Belt</title>
 
 <link rel="stylesheet" href="css/style.css">
 
@@ -17,24 +17,19 @@
          style="width:60px; height:60px; border-radius:50%; margin-top:5px;">
 </div>
 
-<h1>🥋 Quiz Black Belt</h1>
+<h1>🥋Black Belt</h1>
 
-<section id="cadastroTela" class="tela">
-<h2>Cadastrar Técnica</h2>
+<section id="telaInicial" class="tela">
 
-<input type="text" id="imagemInput" placeholder="Link da imagem">
-<textarea id="respostaInput" placeholder="Resposta correta (separar por espaço)"></textarea>
-<textarea id="erradasInput" placeholder="Opções de nomes errados (separar por vírgula)"></textarea>
+    <div class="conteudo-inicial">
+        <img src="https://taekwondo-horvat.com/wp-content/uploads/2021/03/IMG_0217-1024x947.jpg" 
+             alt="Imagem inicial"
+             class="imagem-inicial">
 
-<button class="cadastrar" onclick="cadastrarTecnica()">Cadastrar</button>
-
-
-<button class="toggle-btn" onclick="toggleLista()">Mostrar Técnicas Cadastradas</button>
-
-<div id="listaContainer" class="hidden">
-<h3>Técnicas Cadastradas</h3>
-<div id="listaTecnicas"></div>
-</div>
+        <img src="https://i.pinimg.com/736x/67/8a/d9/678ad98e3a425a7db555372eefb78cae.jpg" 
+             alt="Imagem inicial 2"
+             class="imagem-inicial">
+    </div>
 
 </section>
 
@@ -199,67 +194,83 @@
 
     <hr>
 
-    <h4>Diga o significado</h4>
+   <h4>Diga o significado</h4>
 
-    <p><strong>Tchariot</strong></p>
-    <select onchange="verificarResposta(this, 'Sentido')">
-        <option>Escolha...</option>
-        <option>Sentido</option>
-        <option>Preparar</option>
-        <option>Descansar</option>
-        <option>Saudação</option>
-        <option>Debandar</option>
-    </select>
+<div class="quiz-significado">
 
-    <p><strong>Kian-lhe / Kiuniê</strong></p>
-    <select onchange="verificarResposta(this, 'Cumprimentar, Saudação')">
-        <option>Escolha...</option>
-        <option>Sentido</option>
-        <option>Cumprimentar, Saudação</option>
-        <option>Preparar</option>
-        <option>Descansar</option>
-        <option>Debandar</option>
-    </select>
+    <div class="pergunta" data-resposta="Sentido">
+        <p><strong>Tchariot</strong></p>
+        <div class="opcoes-baloes">
+            <button>Sentido</button>
+            <button>Preparar</button>
+            <button>Descansar</button>
+            <button>Saudação</button>
+            <button>Debandar</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Tchumbi</strong></p>
-    <select onchange="verificarResposta(this, 'Preparar')">
-        <option>Escolha...</option>
-        <option>Sentido</option>
-        <option>Saudação</option>
-        <option>Preparar</option>
-        <option>Descansar</option>
-        <option>Debandar</option>
-    </select>
+    <div class="pergunta" data-resposta="Cumprimentar, Saudação">
+        <p><strong>Kian-lhe / Kiuniê</strong></p>
+        <div class="opcoes-baloes">
+            <button>Sentido</button>
+            <button>Cumprimentar, Saudação</button>
+            <button>Preparar</button>
+            <button>Descansar</button>
+            <button>Debandar</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Chiô</strong></p>
-    <select onchange="verificarResposta(this, 'Descansar')">
-        <option>Escolha...</option>
-        <option>Sentido</option>
-        <option>Preparar</option>
-        <option>Descansar</option>
-        <option>Saudação</option>
-        <option>Debandar</option>
-    </select>
+    <div class="pergunta" data-resposta="Preparar">
+        <p><strong>Tchumbi</strong></p>
+        <div class="opcoes-baloes">
+            <button>Sentido</button>
+            <button>Saudação</button>
+            <button>Preparar</button>
+            <button>Descansar</button>
+            <button>Debandar</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Kuki Derraio Kian-lhe</strong></p>
-    <select onchange="verificarResposta(this, 'Cumprimento as Bandeiras')">
-        <option>Escolha...</option>
-        <option>Sentido</option>
-        <option>Cumprimento as Bandeiras</option>
-        <option>Preparar</option>
-        <option>Saudação</option>
-        <option>Debandar</option>
-    </select>
+    <div class="pergunta" data-resposta="Descansar">
+        <p><strong>Chiô</strong></p>
+        <div class="opcoes-baloes">
+            <button>Sentido</button>
+            <button>Preparar</button>
+            <button>Descansar</button>
+            <button>Saudação</button>
+            <button>Debandar</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Retchô</strong></p>
-    <select onchange="verificarResposta(this, 'Debandar, dispersar')">
-        <option>Escolha...</option>
-        <option>Sentido</option>
-        <option>Preparar</option>
-        <option>Descansar</option>
-        <option>Saudação</option>
-        <option>Debandar, dispersar</option>
-    </select>
+    <div class="pergunta" data-resposta="Cumprimento as Bandeiras">
+        <p><strong>Kuki Derraio Kian-lhe</strong></p>
+        <div class="opcoes-baloes">
+            <button>Sentido</button>
+            <button>Cumprimento as Bandeiras</button>
+            <button>Preparar</button>
+            <button>Saudação</button>
+            <button>Debandar</button>
+        </div>
+        <br>
+    </div>
+
+    <div class="pergunta" data-resposta="Debandar, dispersar">
+        <p><strong>Retchô</strong></p>
+        <div class="opcoes-baloes">
+            <button>Sentido</button>
+            <button>Preparar</button>
+            <button>Descansar</button>
+            <button>Saudação</button>
+            <button>Debandar, dispersar</button>
+        </div>
+        <br>
+    </div>
+
+</div>
 
 </div>
     </div>
@@ -339,70 +350,89 @@
 
     <h4>Diga o significado</h4>
 
-    <p><strong>Kwan Won</strong></p>
-    <select onchange="verificarResposta(this, 'Aluno')">
-        <option>Escolha...</option>
-        <option>Aluno</option>
-        <option>Assistente de Instrutor</option>
-        <option>Instrutor</option>
-        <option>Mestre</option>
-        <option>Grão Mestre</option>
-    </select>
+<h4>Diga o significado</h4>
 
-    <p><strong>Jokyonim</strong></p>
-    <select onchange="verificarResposta(this, 'Assistente de Instrutor (Faixa vermelha ponta preta)')">
-        <option>Escolha...</option>
-        <option>Aluno</option>
-        <option>Assistente de Instrutor (Faixa vermelha ponta preta)</option>
-        <option>Instrutor</option>
-        <option>Mestre</option>
-        <option>Grão Mestre</option>
-    </select>
+<div class="quiz-significado">
 
-    <p><strong>Kyosanim</strong></p>
-    <select onchange="verificarResposta(this, 'Instrutor (Faixa Preta de 1º até 3º Dan)')">
-        <option>Escolha...</option>
-        <option>Aluno</option>
-        <option>Assistente de Instrutor</option>
-        <option>Instrutor (Faixa Preta de 1º até 3º Dan)</option>
-        <option>Mestre</option>
-        <option>Grão Mestre</option>
-    </select>
+    <div class="pergunta" data-resposta="Aluno">
+        <p><strong>Kwan Won</strong></p>
+        <div class="opcoes-baloes">
+            <button>Aluno</button>
+            <button>Assistente de Instrutor</button>
+            <button>Instrutor</button>
+            <button>Mestre</button>
+            <button>Grão Mestre</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Sabunim</strong></p>
-    <select onchange="verificarResposta(this, 'Mestre (Faixa Preta de 4º até 6º Dan)')">
-        <option>Escolha...</option>
-        <option>Aluno</option>
-        <option>Assistente de Instrutor</option>
-        <option>Instrutor</option>
-        <option>Mestre (Faixa Preta de 4º até 6º Dan)</option>
-        <option>Grão Mestre</option>
-    </select>
+    <div class="pergunta" data-resposta="Assistente de Instrutor (Faixa vermelha ponta preta)">
+        <p><strong>Jokyonim</strong></p>
+        <div class="opcoes-baloes">
+            <button>Aluno</button>
+            <button>Assistente de Instrutor (Faixa vermelha ponta preta)</button>
+            <button>Instrutor</button>
+            <button>Mestre</button>
+            <button>Grão Mestre</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Kwanjanim</strong></p>
-    <select onchange="verificarResposta(this, 'Grão Mestre (Faixa Preta de 7º Dan em diante)')">
-        <option>Escolha...</option>
-        <option>Aluno</option>
-        <option>Assistente de Instrutor</option>
-        <option>Instrutor</option>
-        <option>Mestre</option>
-        <option>Grão Mestre (Faixa Preta de 7º Dan em diante)</option>
-    </select>
+    <div class="pergunta" data-resposta="Instrutor (Faixa Preta de 1º até 3º Dan)">
+        <p><strong>Kyosanim</strong></p>
+        <div class="opcoes-baloes">
+            <button>Aluno</button>
+            <button>Assistente de Instrutor</button>
+            <button>Instrutor (Faixa Preta de 1º até 3º Dan)</button>
+            <button>Mestre</button>
+            <button>Grão Mestre</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Ap</strong></p>
-    <select onchange="verificarResposta(this, 'Frente')">
-        <option>Escolha...</option>
-        <option>Frente</option>
-        <option>Trás</option>
-    </select>
+    <div class="pergunta" data-resposta="Mestre (Faixa Preta de 4º até 6º Dan)">
+        <p><strong>Sabunim</strong></p>
+        <div class="opcoes-baloes">
+            <button>Aluno</button>
+            <button>Assistente de Instrutor</button>
+            <button>Instrutor</button>
+            <button>Mestre (Faixa Preta de 4º até 6º Dan)</button>
+            <button>Grão Mestre</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Dwit</strong></p>
-    <select onchange="verificarResposta(this, 'Trás')">
-        <option>Escolha...</option>
-        <option>Frente</option>
-        <option>Trás</option>
-    </select>
+    <div class="pergunta" data-resposta="Grão Mestre (Faixa Preta de 7º Dan em diante)">
+        <p><strong>Kwanjanim</strong></p>
+        <div class="opcoes-baloes">
+            <button>Aluno</button>
+            <button>Assistente de Instrutor</button>
+            <button>Instrutor</button>
+            <button>Mestre</button>
+            <button>Grão Mestre (Faixa Preta de 7º Dan em diante)</button>
+        </div>
+        <br>
+    </div>
 
+    <div class="pergunta" data-resposta="Frente">
+        <p><strong>Ap</strong></p>
+        <div class="opcoes-baloes">
+            <button>Frente</button>
+            <button>Trás</button>
+        </div>
+        <br>
+    </div>
+
+    <div class="pergunta" data-resposta="Trás">
+        <p><strong>Dwit</strong></p>
+        <div class="opcoes-baloes">
+            <button>Frente</button>
+            <button>Trás</button>
+        </div>
+        <br>
+    </div>
+
+</div>
 </div>
 
 <button class="acordeao">6 - Kyorugui (Luta)</button>
@@ -492,62 +522,78 @@
 
     <hr>
 
-    <h4>Diga o significado</h4>
+<h4>Diga o significado</h4>
 
-    <p><strong>Dobok</strong></p>
-    <select onchange="verificarResposta(this, 'Uniforme de treino')">
-        <option>Escolha...</option>
-        <option>Uniforme de treino</option>
-        <option>Academia ou local de treino</option>
-        <option>Pé</option>
-        <option>Peito do pé</option>
-        <option>Faca do pé</option>
-    </select>
+<div class="quiz-significado">
 
-    <p><strong>Dojang</strong></p>
-    <select onchange="verificarResposta(this, 'Academia ou local de treino')">
-        <option>Escolha...</option>
-        <option>Uniforme de treino</option>
-        <option>Academia ou local de treino</option>
-        <option>Pé</option>
-        <option>Peito do pé</option>
-        <option>Faca do pé</option>
-    </select>
+    <div class="pergunta" data-resposta="Uniforme de treino">
+        <p><strong>Dobok</strong></p>
+        <div class="opcoes-baloes">
+            <button>Uniforme de treino</button>
+            <button>Academia ou local de treino</button>
+            <button>Pé</button>
+            <button>Peito do pé</button>
+            <button>Faca do pé</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Bal</strong></p>
-    <select onchange="verificarResposta(this, 'Pé')">
-        <option>Escolha...</option>
-        <option>Uniforme de treino</option>
-        <option>Academia ou local de treino</option>
-        <option>Pé</option>
-        <option>Peito do pé</option>
-        <option>Faca do pé</option>
-    </select>
+    <div class="pergunta" data-resposta="Academia ou local de treino">
+        <p><strong>Dojang</strong></p>
+        <div class="opcoes-baloes">
+            <button>Uniforme de treino</button>
+            <button>Academia ou local de treino</button>
+            <button>Pé</button>
+            <button>Peito do pé</button>
+            <button>Faca do pé</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Bal Dung</strong></p>
-    <select onchange="verificarResposta(this, 'Peito do pé')">
-        <option>Escolha...</option>
-        <option>Pé</option>
-        <option>Peito do pé</option>
-        <option>Faca do pé</option>
-    </select>
+    <div class="pergunta" data-resposta="Pé">
+        <p><strong>Bal</strong></p>
+        <div class="opcoes-baloes">
+            <button>Uniforme de treino</button>
+            <button>Academia ou local de treino</button>
+            <button>Pé</button>
+            <button>Peito do pé</button>
+            <button>Faca do pé</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Balnal</strong></p>
-    <select onchange="verificarResposta(this, 'Faca do pé')">
-        <option>Escolha...</option>
-        <option>Pé</option>
-        <option>Peito do pé</option>
-        <option>Faca do pé</option>
-    </select>
+    <div class="pergunta" data-resposta="Peito do pé">
+        <p><strong>Bal Dung</strong></p>
+        <div class="opcoes-baloes">
+            <button>Pé</button>
+            <button>Peito do pé</button>
+            <button>Faca do pé</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Balnal Dung</strong></p>
-    <select onchange="verificarResposta(this, 'Lado oposto a “Faca do pé” (borda interna do pé)')">
-        <option>Escolha...</option>
-        <option>Lado oposto a “Faca do pé” (borda interna do pé)</option>
-        <option>Peito do pé</option>
-        <option>Pé</option>
-        <option>Faca do pé</option>
-    </select>
+    <div class="pergunta" data-resposta="Faca do pé">
+        <p><strong>Balnal</strong></p>
+        <div class="opcoes-baloes">
+            <button>Pé</button>
+            <button>Peito do pé</button>
+            <button>Faca do pé</button>
+        </div>
+        <br>
+    </div>
+
+    <div class="pergunta" data-resposta="Lado oposto a “Faca do pé” (borda interna do pé)">
+        <p><strong>Balnal Dung</strong></p>
+        <div class="opcoes-baloes">
+            <button>Lado oposto a “Faca do pé” (borda interna do pé)</button>
+            <button>Peito do pé</button>
+            <button>Pé</button>
+            <button>Faca do pé</button>
+        </div>
+        <br>
+    </div>
+
+</div>
 
 </div>
 
@@ -640,73 +686,89 @@
 
     <hr>
 
-    <h4>Diga o significado</h4>
+<h4>Diga o significado</h4>
 
-    <p><strong>Yop</strong></p>
-    <select onchange="verificarResposta(this, 'Lado')">
-        <option>Escolha...</option>
-        <option>Lado</option>
-        <option>Dentro</option>
-        <option>Fora</option>
-        <option>Em cima</option>
-        <option>“Sola dos pés”</option>
-        <option>Faixa</option>
-    </select>
+<div class="quiz-significado">
 
-    <p><strong>An</strong></p>
-    <select onchange="verificarResposta(this, 'Dentro')">
-        <option>Escolha...</option>
-        <option>Lado</option>
-        <option>Dentro</option>
-        <option>Fora</option>
-        <option>Em cima</option>
-        <option>“Sola dos pés”</option>
-        <option>Faixa</option>
-    </select>
+    <div class="pergunta" data-resposta="Lado">
+        <p><strong>Yop</strong></p>
+        <div class="opcoes-baloes">
+            <button>Lado</button>
+            <button>Dentro</button>
+            <button>Fora</button>
+            <button>Em cima</button>
+            <button>“Sola dos pés”</button>
+            <button>Faixa</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Pakkat</strong></p>
-    <select onchange="verificarResposta(this, 'Fora')">
-        <option>Escolha...</option>
-        <option>Lado</option>
-        <option>Dentro</option>
-        <option>Fora</option>
-        <option>Em cima</option>
-        <option>“Sola dos pés”</option>
-        <option>Faixa</option>
-    </select>
+    <div class="pergunta" data-resposta="Dentro">
+        <p><strong>An</strong></p>
+        <div class="opcoes-baloes">
+            <button>Lado</button>
+            <button>Dentro</button>
+            <button>Fora</button>
+            <button>Em cima</button>
+            <button>“Sola dos pés”</button>
+            <button>Faixa</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Olgul</strong></p>
-    <select onchange="verificarResposta(this, 'Em cima')">
-        <option>Escolha...</option>
-        <option>Lado</option>
-        <option>Dentro</option>
-        <option>Fora</option>
-        <option>Em cima</option>
-        <option>“Sola dos pés”</option>
-        <option>Faixa</option>
-    </select>
+    <div class="pergunta" data-resposta="Fora">
+        <p><strong>Pakkat</strong></p>
+        <div class="opcoes-baloes">
+            <button>Lado</button>
+            <button>Dentro</button>
+            <button>Fora</button>
+            <button>Em cima</button>
+            <button>“Sola dos pés”</button>
+            <button>Faixa</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Balbadak</strong></p>
-    <select onchange="verificarResposta(this, '“Sola dos pés”')">
-        <option>Escolha...</option>
-        <option>Lado</option>
-        <option>Dentro</option>
-        <option>Fora</option>
-        <option>Em cima</option>
-        <option>“Sola dos pés”</option>
-        <option>Faixa</option>
-    </select>
+    <div class="pergunta" data-resposta="Em cima">
+        <p><strong>Olgul</strong></p>
+        <div class="opcoes-baloes">
+            <button>Lado</button>
+            <button>Dentro</button>
+            <button>Fora</button>
+            <button>Em cima</button>
+            <button>“Sola dos pés”</button>
+            <button>Faixa</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Ti</strong></p>
-    <select onchange="verificarResposta(this, 'Faixa')">
-        <option>Escolha...</option>
-        <option>Lado</option>
-        <option>Dentro</option>
-        <option>Fora</option>
-        <option>Em cima</option>
-        <option>“Sola dos pés”</option>
-        <option>Faixa</option>
-    </select>
+    <div class="pergunta" data-resposta="“Sola dos pés”">
+        <p><strong>Balbadak</strong></p>
+        <div class="opcoes-baloes">
+            <button>Lado</button>
+            <button>Dentro</button>
+            <button>Fora</button>
+            <button>Em cima</button>
+            <button>“Sola dos pés”</button>
+            <button>Faixa</button>
+        </div>
+        <br>
+    </div>
+
+    <div class="pergunta" data-resposta="Faixa">
+        <p><strong>Ti</strong></p>
+        <div class="opcoes-baloes">
+            <button>Lado</button>
+            <button>Dentro</button>
+            <button>Fora</button>
+            <button>Em cima</button>
+            <button>“Sola dos pés”</button>
+            <button>Faixa</button>
+        </div>
+        <br>
+    </div>
+
+</div>
 
 </div>
 
@@ -798,73 +860,89 @@
 
     <hr>
 
-    <h4>Diga o significado</h4>
+<h4>Diga o significado</h4>
 
-    <p><strong>Ap Tchuk</strong></p>
-    <select onchange="verificarResposta(this, 'Bola do pé')">
-        <option>Escolha...</option>
-        <option>Bola do pé</option>
-        <option>Calcanhar</option>
-        <option>Esquerda</option>
-        <option>Direita</option>
-        <option>Começar</option>
-        <option>Sentar</option>
-    </select>
+<div class="quiz-significado">
 
-    <p><strong>Dwit Tchuk</strong></p>
-    <select onchange="verificarResposta(this, 'Calcanhar')">
-        <option>Escolha...</option>
-        <option>Bola do pé</option>
-        <option>Calcanhar</option>
-        <option>Esquerda</option>
-        <option>Direita</option>
-        <option>Começar</option>
-        <option>Sentar</option>
-    </select>
+    <div class="pergunta" data-resposta="Bola do pé">
+        <p><strong>Ap Tchuk</strong></p>
+        <div class="opcoes-baloes">
+            <button>Bola do pé</button>
+            <button>Calcanhar</button>
+            <button>Esquerda</button>
+            <button>Direita</button>
+            <button>Começar</button>
+            <button>Sentar</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Wen</strong></p>
-    <select onchange="verificarResposta(this, 'Esquerda')">
-        <option>Escolha...</option>
-        <option>Bola do pé</option>
-        <option>Calcanhar</option>
-        <option>Esquerda</option>
-        <option>Direita</option>
-        <option>Começar</option>
-        <option>Sentar</option>
-    </select>
+    <div class="pergunta" data-resposta="Calcanhar">
+        <p><strong>Dwit Tchuk</strong></p>
+        <div class="opcoes-baloes">
+            <button>Bola do pé</button>
+            <button>Calcanhar</button>
+            <button>Esquerda</button>
+            <button>Direita</button>
+            <button>Começar</button>
+            <button>Sentar</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Orun</strong></p>
-    <select onchange="verificarResposta(this, 'Direita')">
-        <option>Escolha...</option>
-        <option>Bola do pé</option>
-        <option>Calcanhar</option>
-        <option>Esquerda</option>
-        <option>Direita</option>
-        <option>Começar</option>
-        <option>Sentar</option>
-    </select>
+    <div class="pergunta" data-resposta="Esquerda">
+        <p><strong>Wen</strong></p>
+        <div class="opcoes-baloes">
+            <button>Bola do pé</button>
+            <button>Calcanhar</button>
+            <button>Esquerda</button>
+            <button>Direita</button>
+            <button>Começar</button>
+            <button>Sentar</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Shidjak</strong></p>
-    <select onchange="verificarResposta(this, 'Começar')">
-        <option>Escolha...</option>
-        <option>Bola do pé</option>
-        <option>Calcanhar</option>
-        <option>Esquerda</option>
-        <option>Direita</option>
-        <option>Começar</option>
-        <option>Sentar</option>
-    </select>
+    <div class="pergunta" data-resposta="Direita">
+        <p><strong>Orun</strong></p>
+        <div class="opcoes-baloes">
+            <button>Bola do pé</button>
+            <button>Calcanhar</button>
+            <button>Esquerda</button>
+            <button>Direita</button>
+            <button>Começar</button>
+            <button>Sentar</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Anja</strong></p>
-    <select onchange="verificarResposta(this, 'Sentar')">
-        <option>Escolha...</option>
-        <option>Bola do pé</option>
-        <option>Calcanhar</option>
-        <option>Esquerda</option>
-        <option>Direita</option>
-        <option>Começar</option>
-        <option>Sentar</option>
-    </select>
+    <div class="pergunta" data-resposta="Começar">
+        <p><strong>Shidjak</strong></p>
+        <div class="opcoes-baloes">
+            <button>Bola do pé</button>
+            <button>Calcanhar</button>
+            <button>Esquerda</button>
+            <button>Direita</button>
+            <button>Começar</button>
+            <button>Sentar</button>
+        </div>
+        <br>
+    </div>
+
+    <div class="pergunta" data-resposta="Sentar">
+        <p><strong>Anja</strong></p>
+        <div class="opcoes-baloes">
+            <button>Bola do pé</button>
+            <button>Calcanhar</button>
+            <button>Esquerda</button>
+            <button>Direita</button>
+            <button>Começar</button>
+            <button>Sentar</button>
+        </div>
+        <br>
+    </div>
+
+</div>
 
 </div>
 
@@ -960,80 +1038,96 @@
 
     <hr>
 
-    <h4>Diga o significado</h4>
+<h4>Diga o significado</h4>
 
-    <p><strong>Tiro Torá</strong></p>
-    <select onchange="verificarResposta(this, 'Meia volta')">
-        <option>Escolha...</option>
-        <option>Meia volta</option>
-        <option>Início / Eternidade</option>
-        <option>Cruzado</option>
-        <option>Apoio</option>
-        <option>Torcido</option>
-        <option>Trocar de base</option>
-    </select>
+<div class="quiz-significado">
 
-    <p><strong>Taeguk</strong></p>
-    <select onchange="verificarResposta(this, 'Tae – início / Guk – eternidade')">
-        <option>Escolha...</option>
-        <option>Meia volta</option>
-        <option>Tae – início / Guk – eternidade</option>
-        <option>Cruzado</option>
-        <option>Apoio</option>
-        <option>Torcido</option>
-        <option>Trocar de base</option>
-    </select>
+    <div class="pergunta" data-resposta="Meia volta">
+        <p><strong>Tiro Torá</strong></p>
+        <div class="opcoes-baloes">
+            <button>Meia volta</button>
+            <button>Início / Eternidade</button>
+            <button>Cruzado</button>
+            <button>Apoio</button>
+            <button>Torcido</button>
+            <button>Trocar de base</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Coá</strong></p>
-    <select onchange="verificarResposta(this, 'Cruzar')">
-        <option>Escolha...</option>
-        <option>Meia volta</option>
-        <option>Início / Eternidade</option>
-        <option>Cruzar</option>
-        <option>Apoio</option>
-        <option>Torcido</option>
-        <option>Trocar de base</option>
-    </select>
+    <div class="pergunta" data-resposta="Tae – início / Guk – eternidade">
+        <p><strong>Taeguk</strong></p>
+        <div class="opcoes-baloes">
+            <button>Meia volta</button>
+            <button>Tae – início / Guk – eternidade</button>
+            <button>Cruzado</button>
+            <button>Apoio</button>
+            <button>Torcido</button>
+            <button>Trocar de base</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Kodurô</strong></p>
-    <select onchange="verificarResposta(this, 'Apoio')">
-        <option>Escolha...</option>
-        <option>Meia volta</option>
-        <option>Início / Eternidade</option>
-        <option>Cruzar</option>
-        <option>Apoio</option>
-        <option>Torcido</option>
-        <option>Trocar de base</option>
-    </select>
+    <div class="pergunta" data-resposta="Cruzar">
+        <p><strong>Coá</strong></p>
+        <div class="opcoes-baloes">
+            <button>Meia volta</button>
+            <button>Início / Eternidade</button>
+            <button>Cruzar</button>
+            <button>Apoio</button>
+            <button>Torcido</button>
+            <button>Trocar de base</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Pitrô</strong></p>
-    <select onchange="verificarResposta(this, 'Torcido')">
-        <option>Escolha...</option>
-        <option>Meia volta</option>
-        <option>Início / Eternidade</option>
-        <option>Cruzar</option>
-        <option>Apoio</option>
-        <option>Torcido</option>
-        <option>Trocar de base</option>
-    </select>
+    <div class="pergunta" data-resposta="Apoio">
+        <p><strong>Kodurô</strong></p>
+        <div class="opcoes-baloes">
+            <button>Meia volta</button>
+            <button>Início / Eternidade</button>
+            <button>Cruzar</button>
+            <button>Apoio</button>
+            <button>Torcido</button>
+            <button>Trocar de base</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Balbacuó ou Balbacuki</strong></p>
-    <select onchange="verificarResposta(this, 'Trocar de base')">
-        <option>Escolha...</option>
-        <option>Meia volta</option>
-        <option>Início / Eternidade</option>
-        <option>Cruzar</option>
-        <option>Apoio</option>
-        <option>Torcido</option>
-        <option>Trocar de base</option>
-    </select>
+    <div class="pergunta" data-resposta="Torcido">
+        <p><strong>Pitrô</strong></p>
+        <div class="opcoes-baloes">
+            <button>Meia volta</button>
+            <button>Início / Eternidade</button>
+            <button>Cruzar</button>
+            <button>Apoio</button>
+            <button>Torcido</button>
+            <button>Trocar de base</button>
+        </div>
+        <br>
+    </div>
+
+    <div class="pergunta" data-resposta="Trocar de base">
+        <p><strong>Balbacuó ou Balbacuki</strong></p>
+        <div class="opcoes-baloes">
+            <button>Meia volta</button>
+            <button>Início / Eternidade</button>
+            <button>Cruzar</button>
+            <button>Apoio</button>
+            <button>Torcido</button>
+            <button>Trocar de base</button>
+        </div>
+        <br>
+    </div>
+
+</div>
 
 </div>
 
 <!-- 6 - Kyorugui -->
 <button class="acordeao">6 - Kyorugui (Luta)</button>
 <div class="painel">
-    <p>7 Lutas</p>
+    <p>2 Lutas (sendo 1x1 e 2x2)</p>
 </div>
 
 <!-- 7 - Kyok Pa -->
@@ -1126,43 +1220,55 @@
 
     <hr>
 
-    <h4>Diga o significado</h4>
+<h4>Diga o significado</h4>
 
-    <p><strong>Sonnal Dung</strong></p>
-    <select onchange="verificarResposta(this, 'Lado oposto a faca da mão')">
-        <option>Escolha...</option>
-        <option>Lado oposto a faca da mão</option>
-        <option>Técnica de quebramento</option>
-        <option>Ponta dos dedos</option>
-        <option>Obrigado</option>
-    </select>
+<div class="quiz-significado">
 
-    <p><strong>Kyok-Pa</strong></p>
-    <select onchange="verificarResposta(this, 'Técnica de quebramento')">
-        <option>Escolha...</option>
-        <option>Lado oposto a faca da mão</option>
-        <option>Técnica de quebramento</option>
-        <option>Ponta dos dedos</option>
-        <option>Obrigado</option>
-    </select>
+    <div class="pergunta" data-resposta="Lado oposto a faca da mão">
+        <p><strong>Sonnal Dung</strong></p>
+        <div class="opcoes-baloes">
+            <button>Lado oposto a faca da mão</button>
+            <button>Técnica de quebramento</button>
+            <button>Ponta dos dedos</button>
+            <button>Obrigado</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Pyon Son-Kut</strong></p>
-    <select onchange="verificarResposta(this, 'Ponta dos dedos')">
-        <option>Escolha...</option>
-        <option>Lado oposto a faca da mão</option>
-        <option>Técnica de quebramento</option>
-        <option>Ponta dos dedos</option>
-        <option>Obrigado</option>
-    </select>
+    <div class="pergunta" data-resposta="Técnica de quebramento">
+        <p><strong>Kyok-Pa</strong></p>
+        <div class="opcoes-baloes">
+            <button>Lado oposto a faca da mão</button>
+            <button>Técnica de quebramento</button>
+            <button>Ponta dos dedos</button>
+            <button>Obrigado</button>
+        </div>
+        <br>
+    </div>
 
-    <p><strong>Kamsahamnida</strong></p>
-    <select onchange="verificarResposta(this, 'Obrigado')">
-        <option>Escolha...</option>
-        <option>Lado oposto a faca da mão</option>
-        <option>Técnica de quebramento</option>
-        <option>Ponta dos dedos</option>
-        <option>Obrigado</option>
-    </select>
+    <div class="pergunta" data-resposta="Ponta dos dedos">
+        <p><strong>Pyon Son-Kut</strong></p>
+        <div class="opcoes-baloes">
+            <button>Lado oposto a faca da mão</button>
+            <button>Técnica de quebramento</button>
+            <button>Ponta dos dedos</button>
+            <button>Obrigado</button>
+        </div>
+        <br>
+    </div>
+
+    <div class="pergunta" data-resposta="Obrigado">
+        <p><strong>Kamsahamnida</strong></p>
+        <div class="opcoes-baloes">
+            <button>Lado oposto a faca da mão</button>
+            <button>Técnica de quebramento</button>
+            <button>Ponta dos dedos</button>
+            <button>Obrigado</button>
+        </div>
+        <br>
+    </div>
+
+</div>
 
 </div>
 
@@ -1280,55 +1386,69 @@ Espírito Indomável: ter coragem para enfrentar todos os desafios.
 
 <h4>Diga o significado</h4>
 
-<p><strong>Ilosô</strong></p>
-<select onchange="verificarResposta(this, 'Ficar em pé')">
-<option>Escolha...</option>
-<option>Ficar em pé</option>
-<option>Ajoelhar</option>
-<option>Joelho</option>
-<option>Queixo</option>
-<option>Estilo ou escola</option>
-</select>
+<div class="quiz-significado">
 
-<p><strong>Murup Kurô</strong></p>
-<select onchange="verificarResposta(this, 'Ajoelhar (forma de sentar-se formalmente na cultura coreana)')">
-<option>Escolha...</option>
-<option>Ficar em pé</option>
-<option>Ajoelhar (forma de sentar-se formalmente na cultura coreana)</option>
-<option>Joelho</option>
-<option>Queixo</option>
-<option>Estilo ou escola</option>
-</select>
+    <div class="pergunta" data-resposta="Ficar em pé">
+        <p><strong>Ilosô</strong></p>
+        <div class="opcoes-baloes">
+            <button>Ficar em pé</button>
+            <button>Ajoelhar</button>
+            <button>Joelho</button>
+            <button>Queixo</button>
+            <button>Estilo ou escola</button>
+        </div>
+        <br>
+    </div>
 
-<p><strong>Murup</strong></p>
-<select onchange="verificarResposta(this, 'Joelho')">
-<option>Escolha...</option>
-<option>Ficar em pé</option>
-<option>Ajoelhar</option>
-<option>Joelho</option>
-<option>Queixo</option>
-<option>Estilo ou escola</option>
-</select>
+    <div class="pergunta" data-resposta="Ajoelhar (forma de sentar-se formalmente na cultura coreana)">
+        <p><strong>Murup Kurô</strong></p>
+        <div class="opcoes-baloes">
+            <button>Ficar em pé</button>
+            <button>Ajoelhar (forma de sentar-se formalmente na cultura coreana)</button>
+            <button>Joelho</button>
+            <button>Queixo</button>
+            <button>Estilo ou escola</button>
+        </div>
+        <br>
+    </div>
 
-<p><strong>Kwan</strong></p>
-<select onchange="verificarResposta(this, 'Estilo ou escola')">
-<option>Escolha...</option>
-<option>Ficar em pé</option>
-<option>Ajoelhar</option>
-<option>Joelho</option>
-<option>Queixo</option>
-<option>Estilo ou escola</option>
-</select>
+    <div class="pergunta" data-resposta="Joelho">
+        <p><strong>Murup</strong></p>
+        <div class="opcoes-baloes">
+            <button>Ficar em pé</button>
+            <button>Ajoelhar</button>
+            <button>Joelho</button>
+            <button>Queixo</button>
+            <button>Estilo ou escola</button>
+        </div>
+        <br>
+    </div>
 
-<p><strong>Teok</strong></p>
-<select onchange="verificarResposta(this, 'Queixo')">
-<option>Escolha...</option>
-<option>Ficar em pé</option>
-<option>Ajoelhar</option>
-<option>Joelho</option>
-<option>Queixo</option>
-<option>Estilo ou escola</option>
-</select>
+    <div class="pergunta" data-resposta="Estilo ou escola">
+        <p><strong>Kwan</strong></p>
+        <div class="opcoes-baloes">
+            <button>Ficar em pé</button>
+            <button>Ajoelhar</button>
+            <button>Joelho</button>
+            <button>Queixo</button>
+            <button>Estilo ou escola</button>
+        </div>
+        <br>
+    </div>
+
+    <div class="pergunta" data-resposta="Queixo">
+        <p><strong>Teok</strong></p>
+        <div class="opcoes-baloes">
+            <button>Ficar em pé</button>
+            <button>Ajoelhar</button>
+            <button>Joelho</button>
+            <button>Queixo</button>
+            <button>Estilo ou escola</button>
+        </div>
+        <br>
+    </div>
+
+</div>
 
 </div>
 
@@ -1478,6 +1598,42 @@ Espírito Indomável: ter coragem para enfrentar todos os desafios.
 
 </section>
 
+<section id="sebonDubon" class="tela hidden">
+    <h2>📺 Sebon e Dubon Kyorugui</h2>
+    <h2>DISPONÍVEL APÓS A GRAVAÇÃO DOS VÍDEOS</h2>
+
+    <div class="container-kyorugui">
+
+        <!-- SEBON -->
+        <div class="card-kyorugui">
+            <h3>Sebon Kyorugui</h3>
+
+            <div class="lista-botoes">
+                <button>Sebon Kyorugui - 1 a 5</button>
+                <button>Sebon Kyorugui - 6 a 10</button>
+                <button>Sebon Kyorugui - 11 a 15</button>
+                <button>Sebon Kyorugui - 16 a 20</button>
+                <button>Sebon Kyorugui - 21 a 25</button>
+                <button>Sebon Kyorugui - 26 a 30</button>
+            </div>
+        </div>
+
+        <!-- DUBON -->
+        <div class="card-kyorugui">
+            <h3>Dubon Kyorugui</h3>
+
+            <div class="lista-botoes">
+                <button>Dubon Kyorugui - 1 a 4</button>
+                <button>Dubon Kyorugui - 5 a 8</button>
+                <button>Dubon Kyorugui - 9 a 12</button>
+                <button>Dubon Kyorugui - 13 a 16</button>
+                <button>Hanja Kyorugui - 1 a 9</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
 <section id="adminTela" class="tela hidden">
     <h2>Administração</h2>
 
@@ -1493,6 +1649,22 @@ Espírito Indomável: ter coragem para enfrentar todos os desafios.
     <button style="background:#b00020; color:white;" onclick="resetarBanco()">
         🔄 Resetar Banco de Dados
     </button>
+
+    <h4>Cadastrar Técnica</h4>
+
+<input type="text" id="imagemInput" placeholder="Link da imagem">
+<textarea id="respostaInput" placeholder="Resposta correta (separar por espaço)"></textarea>
+<textarea id="erradasInput" placeholder="Opções de nomes errados (separar por vírgula)"></textarea>
+
+<button class="cadastrar" onclick="cadastrarTecnica()">Cadastrar</button>
+
+
+<button class="toggle-btn" onclick="toggleLista()">Mostrar Técnicas Cadastradas</button>
+
+<div id="listaContainer" class="hidden">
+<h3>Técnicas Cadastradas</h3>
+<div id="listaTecnicas"></div>
+</div>
 </section>
 
 <div id="overlayResultado" class="overlay hidden">
@@ -1500,10 +1672,10 @@ Espírito Indomável: ter coragem para enfrentar todos os desafios.
 </div>
 
 <div class="menuInferior">
-    <button onclick="trocarTela('cadastroTela')">Cadastrar Técnicas</button>
     <button onclick="trocarTela('jogoTela')">Jogo</button>
     <button onclick="trocarTela('apostila')">Apostila</button>
     <button onclick="trocarTela('poomsaeTela')">Poomsae</button>
+    <button onclick="trocarTela('sebonDubon')">Sebon/Dubon</button>
     <button onclick="trocarTela('adminTela')">Admin</button>
 </div>
 
