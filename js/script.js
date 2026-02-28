@@ -29,6 +29,30 @@ function carregarTecnicasIniciais() {
     }
 }
 
+// SANFONA
+document.querySelectorAll(".acordeao").forEach(botao => {
+    botao.addEventListener("click", function () {
+        this.classList.toggle("ativo");
+        const painel = this.nextElementSibling;
+        painel.style.display =
+            painel.style.display === "block" ? "none" : "block";
+    });
+});
+
+// Mostrar resposta mini quiz
+function toggleResposta(botao) {
+    const resposta = botao.nextElementSibling;
+    resposta.classList.toggle("hidden");
+}
+
+function verificarResposta(select, respostaCorreta) {
+    if (select.value === respostaCorreta) {
+        select.style.backgroundColor = "#c8f7c5"; // verde
+    } else {
+        select.style.backgroundColor = "#f7c5c5"; // vermelho
+    }
+}
+
 function trocarTela(id) {
 
     document.querySelectorAll(".tela").forEach(t => {
@@ -38,6 +62,17 @@ function trocarTela(id) {
     document.getElementById(id).classList.remove("hidden");
 
     window.scrollTo(0,0);
+}
+
+function mostrarFaixa(id) {
+
+    document.querySelectorAll(".faixa").forEach(f => {
+        f.classList.add("hidden");
+    });
+
+    document.getElementById(id).classList.remove("hidden");
+
+    window.scrollTo(0, 0);
 }
 
 function abrirPoomsae(segundos) {

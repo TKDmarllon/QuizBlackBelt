@@ -37,6 +37,19 @@ body {
     font-weight: 500;
 }
 
+.menu-faixas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.menu-faixas button {
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
 .menuInferior button:hover {
     color: #2196f3;
 }
