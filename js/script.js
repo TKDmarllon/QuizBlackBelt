@@ -75,6 +75,23 @@ function mostrarFaixa(id) {
     window.scrollTo(0, 0);
 }
 
+// Seleciona todos os botões de acordeão
+const acordeoes = document.querySelectorAll('.acordeao');
+
+acordeoes.forEach(btn => {
+    btn.addEventListener('click', function() {
+        // Alterna a exibição do painel
+        const painel = this.nextElementSibling;
+        painel.classList.toggle('hidden');
+
+        // Scroll suave até o acordeão clicado
+        this.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+});
+
+painel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+
 function abrirPoomsae(segundos) {
     window.open(
         `https://www.youtube.com/watch?v=y-pmLZmjoG8&t=${segundos}s`,
