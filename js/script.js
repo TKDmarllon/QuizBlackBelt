@@ -1,18 +1,19 @@
+// =====================
+// Variáveis globais
+// =====================
 let tecnicas = [];
 let tecnicasEmbaralhadas = [];
 let tecnicaAtualIndex = 0;
 let respostaMontada = [];
 
+// =====================
+// LocalStorage
+// =====================
 function salvarStorage() {
     localStorage.setItem("tecnicas", JSON.stringify(tecnicas));
 }
 
-function embaralhar(array) {
-    return array.sort(() => Math.random() - 0.5);
-}
-
 function carregarTecnicasIniciais() {
-
     const storage = localStorage.getItem("tecnicas");
 
     if (storage) {
@@ -29,22 +30,43 @@ function carregarTecnicasIniciais() {
     }
 }
 
-// SANFONA
+// =====================
+// Função utilitária: embaralhar
+// =====================
+function embaralhar(array) {
+    return array.sort(() => Math.random() - 0.5);
+}
+
+// =====================
+// SANFONA / ACORDEÃO
+// =====================
 document.querySelectorAll(".acordeao").forEach(botao => {
     botao.addEventListener("click", function () {
         this.classList.toggle("ativo");
         const painel = this.nextElementSibling;
-        painel.style.display =
-            painel.style.display === "block" ? "none" : "block";
+
+        // Alterna exibição
+        if (painel.style.display === "block") {
+            painel.style.display = "none";
+        } else {
+            painel.style.display = "block";
+            // Scroll suave para o acordeão aberto
+            painel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     });
 });
 
-// Mostrar resposta mini quiz
+// =====================
+// Mostrar / esconder resposta mini quiz
+// =====================
 function toggleResposta(botao) {
     const resposta = botao.nextElementSibling;
     resposta.classList.toggle("hidden");
 }
 
+// =====================
+// Verificar resposta da múltipla escolha
+// =====================
 function verificarResposta(select, respostaCorreta) {
     if (select.value === respostaCorreta) {
         select.style.backgroundColor = "#c8f7c5"; // verde
@@ -53,52 +75,34 @@ function verificarResposta(select, respostaCorreta) {
     }
 }
 
+// =====================
+// Trocar tela principal
+// =====================
 function trocarTela(id) {
-
-    document.querySelectorAll(".tela").forEach(t => {
-        t.classList.add("hidden");
-    });
-
+    document.querySelectorAll(".tela").forEach(t => t.classList.add("hidden"));
     document.getElementById(id).classList.remove("hidden");
-
     window.scrollTo(0,0);
 }
 
+// =====================
+// Mostrar faixa selecionada
+// =====================
 function mostrarFaixa(id) {
-
-    document.querySelectorAll(".faixa").forEach(f => {
-        f.classList.add("hidden");
-    });
-
+    document.querySelectorAll(".faixa").forEach(f => f.classList.add("hidden"));
     document.getElementById(id).classList.remove("hidden");
-
     window.scrollTo(0, 0);
 }
 
-// Seleciona todos os botões de acordeão
-const acordeoes = document.querySelectorAll('.acordeao');
-
-acordeoes.forEach(btn => {
-    btn.addEventListener('click', function() {
-        // Alterna a exibição do painel
-        const painel = this.nextElementSibling;
-        painel.classList.toggle('hidden');
-
-        // Scroll suave até o acordeão clicado
-        this.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-});
-
-painel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-
+// =====================
+// Abrir vídeo de Poomsae
+// =====================
 function abrirPoomsae(segundos) {
-    window.open(
-        `https://www.youtube.com/watch?v=y-pmLZmjoG8&t=${segundos}s`,
-        "_blank"
-    );
+    window.open(`https://www.youtube.com/watch?v=y-pmLZmjoG8&t=${segundos}s`, "_blank");
 }
 
+// =====================
+// Sistema de técnicas (flashcards)
+// =====================
 function iniciarSistema() {
     listarTecnicas();
     iniciarJogo();
@@ -111,7 +115,6 @@ function iniciarJogo() {
 }
 
 function cadastrarTecnica() {
-
     const imagem = document.getElementById("imagemInput").value;
     const resposta = document.getElementById("respostaInput").value.trim().split(" ");
     const erradas = document.getElementById("erradasInput").value
@@ -159,8 +162,10 @@ function toggleLista() {
     document.getElementById("listaContainer").classList.toggle("hidden");
 }
 
+// =====================
+// Carregar técnica atual
+// =====================
 function carregarJogo() {
-
     if (!tecnicasEmbaralhadas.length) return;
 
     const t = tecnicasEmbaralhadas[tecnicaAtualIndex];
@@ -174,11 +179,7 @@ function carregarJogo() {
     const resposta = Array.isArray(t.resposta) ? t.resposta : [];
     const erradas = Array.isArray(t.erradas) ? t.erradas : [];
 
-    const opcoes = embaralhar([
-        ...resposta,
-        ...erradas
-    ]);
-
+    const opcoes = embaralhar([...resposta, ...erradas]);
     carregarOpcoes(opcoes);
 }
 
@@ -216,7 +217,6 @@ function pularTecnica() {
 }
 
 function verificar() {
-
     const t = tecnicasEmbaralhadas[tecnicaAtualIndex];
     const overlay = document.getElementById("overlayResultado");
     const texto = document.getElementById("overlayTexto");
@@ -224,7 +224,6 @@ function verificar() {
     overlay.classList.remove("hidden", "overlay-correto", "overlay-erro");
 
     if (JSON.stringify(respostaMontada) === JSON.stringify(t.resposta)) {
-
         texto.innerText = "✅ CORRETO! 👊🥋";
         overlay.classList.add("overlay-correto");
 
@@ -236,7 +235,6 @@ function verificar() {
         }, 1500);
 
     } else {
-
         texto.innerText = "❌ ERRADO!";
         overlay.classList.add("overlay-erro");
 
@@ -246,6 +244,9 @@ function verificar() {
     }
 }
 
+// =====================
+// Exportar / importar técnicas
+// =====================
 function exportarTecnicas() {
     const blob = new Blob([JSON.stringify(tecnicas, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
@@ -265,17 +266,17 @@ document.getElementById("importFile").addEventListener("change", function(e) {
     reader.readAsText(e.target.files[0]);
 });
 
-carregarTecnicasIniciais();
-
+// =====================
+// Resetar banco de dados
+// =====================
 function resetarBanco() {
-
-    if (!confirm("Tem certeza que deseja apagar os dados locais e recarregar o banco original?")) {
-        return;
-    }
-
+    if (!confirm("Tem certeza que deseja apagar os dados locais e recarregar o banco original?")) return;
     localStorage.clear();
-
     alert("Banco de dados resetado com sucesso!");
-
-    location.reload(); // recarrega a página
+    location.reload();
 }
+
+// =====================
+// Inicialização
+// =====================
+carregarTecnicasIniciais();
