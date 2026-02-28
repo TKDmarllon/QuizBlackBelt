@@ -88,9 +88,19 @@ function trocarTela(id) {
 // Mostrar faixa selecionada
 // =====================
 function mostrarFaixa(id) {
+    // 1. Esconde
     document.querySelectorAll(".faixa").forEach(f => f.classList.add("hidden"));
-    document.getElementById(id).classList.remove("hidden");
-    window.scrollTo(0, 0);
+    
+    // 2. Seleciona
+    const elementoAlvo = document.getElementById(id);
+    
+    if (elementoAlvo) {
+        // 3. Mostra
+        elementoAlvo.classList.remove("hidden");
+        
+        // 4. Rola a tela
+        elementoAlvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 }
 
 // =====================
