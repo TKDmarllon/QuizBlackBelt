@@ -53,6 +53,16 @@ function trocarTela(id) {
     window.scrollTo(0, 0);
 }
 
+/*=================================================*/
+/*===============POONSAE===========================*/
+/*=================================================*/
+
+function abrirPoomsae(segundos) {
+    window.open(
+        `https://www.youtube.com/watch?v=y-pmLZmjoG8&t=${segundos}s`,
+        "_blank"
+    );
+}
 
 /* ================================================= */
 /* ================= ABA APOSTILA ================== */
